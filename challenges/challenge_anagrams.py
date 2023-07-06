@@ -35,4 +35,3 @@ def merge(left, right):
     merged.extend(right[j:])
 
     return "".join(merged)
-
