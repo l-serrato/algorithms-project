@@ -5,6 +5,8 @@ def find_duplicate(nums):
     nums.sort()
 
     for i in range(1, len(nums)):
+        if nums[i] < 0:
+            return False
         if nums[i] == nums[i - 1]:
             return nums[i]
 
