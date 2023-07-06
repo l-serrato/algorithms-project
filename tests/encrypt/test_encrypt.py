@@ -50,4 +50,25 @@ def test_encrypt_message():
     expected_output = ""
     assert encrypt_message(message, key) == expected_output, "Test case 7 fail"
 
+    # Test case 8: Invalid implementation (no type validation)
+    def encrypt_message_no_type_validation(message, key):
+        if key not in range(1, len(message)):
+            return "".join(reversed(message))
+
+        part_one = reversed(message[:key])
+        part_two = reversed(message[key:])
+
+        if not key % 2:
+            part_two, part_one = part_one, part_two
+
+        return "".join(part_one) + "_" + "".join(part_two)
+
+    message = "Hello, World!"
+    key = 3
+    try:
+        encrypt_message_no_type_validation(message, key)
+        assert False, "Test case 8 failed"
+    except TypeError:
+        pass
+
     print("All test cases passed!")
